@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Grain Texture Overlay */
         body::before {
             content: '';
             position: fixed;
@@ -44,7 +43,6 @@
             opacity: 0.6;
         }
 
-        /* NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -65,11 +63,10 @@
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
         }
 
         .nav-links {
@@ -102,7 +99,6 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
         .hero {
             position: relative;
             height: 100vh;
@@ -223,17 +219,17 @@
             }
         }
 
-        /* CONTINUOUS SLIDING SHOW */
         .sliding-show {
-            padding: 80px 0;
+            padding: 100px 0;
             overflow: hidden;
             background: linear-gradient(180deg, var(--black), var(--dark-maroon));
+            position: relative;
         }
 
         .slide-track {
             display: flex;
-            gap: 30px;
-            animation: scroll 40s linear infinite;
+            animation: scroll 60s linear infinite;
+            will-change: transform;
         }
 
         .slide-track:hover {
@@ -242,24 +238,56 @@
 
         .slide-item {
             flex-shrink: 0;
-            width: 400px;
-            height: 300px;
-            border-radius: 0;
+            width: 450px;
+            height: 320px;
+            margin: 0 20px;
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .slide-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
+            border-radius: 12px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide-item:hover::before {
+            opacity: 1;
+            animation: borderGlow 2s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
         }
 
         .slide-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8);
+            filter: brightness(0.85) contrast(1.1);
             transition: all 0.5s ease;
         }
 
         .slide-item:hover video {
-            filter: brightness(1);
-            transform: scale(1.05);
+            filter: brightness(1) contrast(1.2);
+            transform: scale(1.08);
         }
 
         @keyframes scroll {
@@ -267,11 +295,10 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(calc(-470px * 8));
             }
         }
 
-        /* SECTION STYLES */
         .section {
             padding: 120px 5%;
             position: relative;
@@ -295,17 +322,26 @@
             letter-spacing: 1px;
         }
 
-        /* DISHES SECTION - MASONRY */
         .dishes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .dish-item {
             position: relative;
             overflow: hidden;
             aspect-ratio: 4/5;
+            border-radius: 12px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .dish-item:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
         }
 
         .dish-item:nth-child(4n+1) { aspect-ratio: 1/1; }
@@ -351,17 +387,26 @@
             line-height: 1.6;
         }
 
-        /* SERVICES WITH VIDEO */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
+            gap: 40px;
         }
 
         .service-card {
             position: relative;
-            height: 350px;
+            height: 380px;
             overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
         }
 
         .service-video {
@@ -397,7 +442,6 @@
             line-height: 1.7;
         }
 
-        /* CHEF SECTION WITH SMOKE */
         .chef-section {
             background: linear-gradient(135deg, var(--dark-maroon), var(--black));
             padding: 120px 5%;
@@ -415,6 +459,10 @@
         .chef-videos {
             position: relative;
             height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
         }
 
         .chef-video {
@@ -470,7 +518,6 @@
             margin-bottom: 15px;
         }
 
-        /* JUICE SECTION WITH DROPLETS */
         .juice-section {
             background: linear-gradient(180deg, var(--black), #1a0a0a);
             position: relative;
@@ -519,7 +566,6 @@
             }
         }
 
-        /* DEMO TASTE POPUP */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -546,6 +592,7 @@
             text-align: center;
             position: relative;
             box-shadow: 0 0 60px rgba(212, 175, 55, 0.5);
+            border-radius: 12px;
         }
 
         .popup-close {
@@ -573,7 +620,6 @@
             line-height: 1.8;
         }
 
-        /* STICKY BUTTONS */
         .sticky-contact {
             position: fixed;
             bottom: 30px;
@@ -611,7 +657,6 @@
             transform: scale(1.1);
         }
 
-        /* HAMBURGER MENU */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -640,7 +685,6 @@
             transform: rotate(-45deg) translate(8px, -8px);
         }
 
-        /* MOBILE MENU */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -685,7 +729,6 @@
             padding-left: 10px;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 968px) {
             .nav-links {
                 display: none;
@@ -729,8 +772,8 @@
             }
 
             .slide-item {
-                width: 300px;
-                height: 250px;
+                width: 350px;
+                height: 280px;
             }
 
             .sticky-contact {
@@ -760,7 +803,7 @@
 
         @media (max-width: 576px) {
             .logo {
-                font-size: 1.5rem;
+                height: 45px;
             }
 
             .hero-title {
@@ -801,8 +844,8 @@
             }
 
             .slide-item {
-                width: 250px;
-                height: 200px;
+                width: 280px;
+                height: 220px;
             }
 
             .service-card {
@@ -858,16 +901,15 @@
             }
 
             .logo {
-                font-size: 1.3rem;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="logo">BABA</div>
+        <img src="assets/images/logo.png" alt="BABA Caterers" class="logo">
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -882,7 +924,6 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <ul>
             <li><a href="#home">Home</a></li>
@@ -893,10 +934,9 @@
         </ul>
     </div>
 
-    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
-            <source src="assets/videos/hero-wedding.mp4" type="video/mp4">
+            <source src="assets/videos/bridegroomwaiters (2).mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1 class="hero-title">BABA Caterers</h1>
@@ -909,61 +949,58 @@
         </div>
     </section>
 
-    <!-- CONTINUOUS SLIDING SHOW -->
     <section class="sliding-show">
         <div class="slide-track">
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-1.mp4" type="video/mp4">
+                    <source src="assets/videos/chef1.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-2.mp4" type="video/mp4">
+                    <source src="assets/videos/items (2).mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-3.mp4" type="video/mp4">
+                    <source src="assets/videos/items3.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-4.mp4" type="video/mp4">
+                    <source src="assets/videos/items.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-5.mp4" type="video/mp4">
-                </video>
-            </div>
-            <!-- Duplicate for infinite scroll -->
-            <div class="slide-item">
-                <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-1.mp4" type="video/mp4">
+                    <source src="assets/videos/items6.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-2.mp4" type="video/mp4">
+                    <source src="assets/videos/waiteress.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="slide-item">
                 <video autoplay muted loop playsinline>
-                    <source src="assets/videos/slide-3.mp4" type="video/mp4">
+                    <source src="assets/videos/waiterjuice.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="slide-item">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/waitersserving.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
     </section>
 
-    <!-- TOP DISHES SECTION -->
     <section class="section" id="menu">
         <h2 class="section-title">Shaadi Ke Superstar Dishes</h2>
         <p class="section-subtitle">Har Bite Mein Mohabbat Ka Zaika</p>
         <div class="dishes-grid">
             <div class="dish-item">
                 <video class="dish-video" muted loop playsinline>
-                    <source src="assets/videos/dish-1.mp4" type="video/mp4">
+                    <source src="assets/videos/bridegroomwaiters (3).mp4" type="video/mp4">
                 </video>
                 <div class="dish-overlay">
                     <h3 class="dish-name">Shahi Roll</h3>
@@ -972,7 +1009,7 @@
             </div>
             <div class="dish-item">
                 <video class="dish-video" muted loop playsinline>
-                    <source src="assets/videos/dish-2.mp4" type="video/mp4">
+                    <source src="assets/videos/roll.mp4" type="video/mp4">
                 </video>
                 <div class="dish-overlay">
                     <h3 class="dish-name">Chicken Angara</h3>
@@ -981,7 +1018,7 @@
             </div>
             <div class="dish-item">
                 <video class="dish-video" muted loop playsinline>
-                    <source src="assets/videos/dish-3.mp4" type="video/mp4">
+                    <source src="assets/videos/items5.mp4" type="video/mp4">
                 </video>
                 <div class="dish-overlay">
                     <h3 class="dish-name">Paneer Tikka</h3>
@@ -990,24 +1027,59 @@
             </div>
             <div class="dish-item">
                 <video class="dish-video" muted loop playsinline>
-                    <source src="assets/videos/dish-4.mp4" type="video/mp4">
+                    <source src="assets/videos/items (2).mp4" type="video/mp4">
                 </video>
                 <div class="dish-overlay">
                     <h3 class="dish-name">Mutton Seekh</h3>
                     <p class="dish-tagline">Asli shaahi swad</p>
                 </div>
             </div>
+            <div class="dish-item">
+                <video class="dish-video" muted loop playsinline>
+                    <source src="assets/videos/items3.mp4" type="video/mp4">
+                </video>
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Tandoori Platter</h3>
+                    <p class="dish-tagline">Dhuan aur swad ka milan</p>
+                </div>
+            </div>
+            <div class="dish-item">
+                <video class="dish-video" muted loop playsinline>
+                    <source src="assets/videos/items.mp4" type="video/mp4">
+                </video>
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Dal Makhani</h3>
+                    <p class="dish-tagline">Ghar jaisa pyaar</p>
+                </div>
+            </div>
+            <div class="dish-item">
+                <video class="dish-video" muted loop playsinline>
+                    <source src="assets/videos/items6.mp4" type="video/mp4">
+                </video>
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Biryani Special</h3>
+                    <p class="dish-tagline">Har daane mein khushbu</p>
+                </div>
+            </div>
+            <div class="dish-item">
+                <video class="dish-video" muted loop playsinline>
+                    <source src="assets/videos/chef1.mp4" type="video/mp4">
+                </video>
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Live Grill Counter</h3>
+                    <p class="dish-tagline">Taaza aur taptaaza</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
     <section class="section" id="services">
         <h2 class="section-title">Khaas Services</h2>
         <p class="section-subtitle">Har Zaroorat Ka Khayal</p>
         <div class="services-grid">
             <div class="service-card">
                 <video class="service-video" autoplay muted loop playsinline>
-                    <source src="assets/videos/service-wedding.mp4" type="video/mp4">
+                    <source src="assets/videos/waiteress.mp4" type="video/mp4">
                 </video>
                 <div class="service-content">
                     <h3 class="service-title">Wedding Catering</h3>
@@ -1016,7 +1088,7 @@
             </div>
             <div class="service-card">
                 <video class="service-video" autoplay muted loop playsinline>
-                    <source src="assets/videos/service-live.mp4" type="video/mp4">
+                    <source src="assets/videos/waiterjuice.mp4" type="video/mp4">
                 </video>
                 <div class="service-content">
                     <h3 class="service-title">Live Counters</h3>
@@ -1025,7 +1097,7 @@
             </div>
             <div class="service-card">
                 <video class="service-video" autoplay muted loop playsinline>
-                    <source src="assets/videos/service-starters.mp4" type="video/mp4">
+                    <source src="assets/videos/waitersserving.mp4" type="video/mp4">
                 </video>
                 <div class="service-content">
                     <h3 class="service-title">Starter Specialists</h3>
@@ -1035,18 +1107,17 @@
         </div>
     </section>
 
-    <!-- CHEF SHAKIR SECTION -->
     <section class="chef-section">
         <div class="chef-container">
             <div class="chef-videos">
                 <video class="chef-video active" muted loop playsinline>
-                    <source src="assets/videos/chef-1.mp4" type="video/mp4">
+                    <source src="assets/videos/chef1.mp4" type="video/mp4">
                 </video>
                 <video class="chef-video" muted loop playsinline>
-                    <source src="assets/videos/chef-2.mp4" type="video/mp4">
+                    <source src="assets/videos/chef2.mp4" type="video/mp4">
                 </video>
                 <video class="chef-video" muted loop playsinline>
-                    <source src="assets/videos/chef-3.mp4" type="video/mp4">
+                    <source src="assets/videos/chef1.mp4" type="video/mp4">
                 </video>
                 <div class="smoke-effect"></div>
             </div>
@@ -1059,14 +1130,13 @@
         </div>
     </section>
 
-    <!-- JUICE SECTION -->
     <section class="section juice-section">
         <h2 class="section-title">Fresh Juice Counters</h2>
         <p class="section-subtitle">Taazgi Ka Har Ghoont Khaas</p>
         <div class="services-grid">
             <div class="service-card">
                 <video class="service-video" autoplay muted loop playsinline>
-                    <source src="assets/videos/juice-1.mp4" type="video/mp4">
+                    <source src="assets/videos/juice with baba.mp4" type="video/mp4">
                 </video>
                 <div class="service-content">
                     <h3 class="service-title">Fresh Mocktails</h3>
@@ -1075,7 +1145,7 @@
             </div>
             <div class="service-card">
                 <video class="service-video" autoplay muted loop playsinline>
-                    <source src="assets/videos/juice-2.mp4" type="video/mp4">
+                    <source src="assets/videos/juicewithbaa.mp4" type="video/mp4">
                 </video>
                 <div class="service-content">
                     <h3 class="service-title">Fruit Juices</h3>
@@ -1085,16 +1155,20 @@
         </div>
     </section>
 
-    <!-- DEMO TASTE SECTION -->
-    <section class="section" id="demo">
-        <h2 class="section-title">Demo Taste Available</h2>
-        <p class="section-subtitle">Final booking se pehle, har dish ka mazaa lo</p>
-        <div style="text-align: center; padding: 40px 0;">
-            <a href="https://wa.me/919565655574?text=Hi,%20I%20want%20to%20schedule%20a%20demo%20taste" class="cta-btn cta-primary">Book Demo Taste</a>
+    <section class="section" id="demo" style="position: relative; overflow: hidden;">
+        <video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3);" autoplay muted loop playsinline>
+            <source src="assets/videos/bridegroomwaiters (2).mp4" type="video/mp4">
+        </video>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(92, 15, 15, 0.8), rgba(26, 26, 26, 0.9));"></div>
+        <div style="position: relative; z-index: 10;">
+            <h2 class="section-title">Demo Taste Available</h2>
+            <p class="section-subtitle">Final booking se pehle, har dish ka mazaa lo</p>
+            <div style="text-align: center; padding: 40px 0;">
+                <a href="https://wa.me/919565655574?text=Hi,%20I%20want%20to%20schedule%20a%20demo%20taste" class="cta-btn cta-primary">Book Demo Taste</a>
+            </div>
         </div>
     </section>
 
-    <!-- DEMO TASTE POPUP -->
     <div class="popup-overlay" id="demoPopup">
         <div class="popup-content">
             <button class="popup-close" onclick="closePopup()">✕</button>
@@ -1104,7 +1178,6 @@
         </div>
     </div>
 
-    <!-- CONTACT SECTION -->
     <section class="section" id="contact" style="background: linear-gradient(135deg, var(--dark-maroon), var(--black));">
         <h2 class="section-title">Humse Judein</h2>
         <p class="section-subtitle">Gujarat & Maharashtra Mein Sabse Vishwasniya Catering Service</p>
@@ -1124,21 +1197,18 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer style="background: var(--black); padding: 60px 5% 30px; border-top: 2px solid var(--gold);">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1400px; margin: 0 auto 40px;">
-            <!-- Brand Column -->
             <div>
                 <h3 style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 20px;">BABA Caterers</h3>
                 <p style="color: var(--ivory); line-height: 1.8; margin-bottom: 20px;">15+ saalon se Gujarat & Maharashtra mein wedding catering ki pehli pasand. Chef Shakir ke haathon ka jaadu har shaadi ko khaas banata hai.</p>
                 <div style="display: flex; gap: 15px;">
                     <a href="#" style="width: 45px; height: 45px; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--black); font-size: 1.3rem; text-decoration: none; transition: transform 0.3s;">📘</a>
-                    <a href="#" style="width: 45px; height: 45px; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--black); font-size: 1.3rem; text-decoration: none; transition: transform 0.3s;">📷</a>
+                    <a href="https://www.instagram.com/baba4caterers?igsh=Y2o2dng5aml1NTF6" style="width: 45px; height: 45px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; text-decoration: none; transition: transform 0.3s; border-radius: 8px;">📷</a>
                     <a href="https://wa.me/919565655574" style="width: 45px; height: 45px; background: #25D366; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; text-decoration: none; transition: transform 0.3s;">💬</a>
                 </div>
             </div>
 
-            <!-- Quick Links -->
             <div>
                 <h4 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; margin-bottom: 20px;">Quick Links</h4>
                 <ul style="list-style: none; padding: 0;">
@@ -1150,7 +1220,6 @@
                 </ul>
             </div>
 
-            <!-- Services -->
             <div>
                 <h4 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; margin-bottom: 20px;">Hamari Services</h4>
                 <ul style="list-style: none; padding: 0; color: var(--ivory); line-height: 2;">
@@ -1163,7 +1232,6 @@
                 </ul>
             </div>
 
-            <!-- Working Hours -->
             <div>
                 <h4 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; margin-bottom: 20px;">Working Hours</h4>
                 <p style="color: var(--ivory); line-height: 2;">
@@ -1172,25 +1240,22 @@
                     <strong>Call us anytime:</strong><br>
                     9565655574
                 </p>
-                <a href="https://wa.me/919565655574?text=Hi%20BABA%20Caterers,%20I%20want%20to%20book" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: linear-gradient(135deg, var(--gold), #C9A247); color: var(--black); text-decoration: none; font-weight: 600; transition: transform 0.3s;">Book Now</a>
+                <a href="https://wa.me/919565655574?text=Hi%20BABA%20Caterers,%20I%20want%20to%20book" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: linear-gradient(135deg, var(--gold), #C9A247); color: var(--black); text-decoration: none; font-weight: 600; transition: transform 0.3s; border-radius: 6px;">Book Now</a>
             </div>
         </div>
 
-        <!-- Bottom Bar -->
         <div style="border-top: 1px solid rgba(212, 175, 55, 0.3); padding-top: 30px; text-align: center; color: var(--gold-light);">
             <p style="margin-bottom: 10px;">© 2025 BABA Caterers. All Rights Reserved. | Crafted with ❤️ for Every Wedding</p>
             <p style="font-size: 0.9rem; color: rgba(255, 254, 247, 0.6);">Gujarat & Maharashtra Ki Sabse Bharosemand Wedding Catering Service</p>
         </div>
     </footer>
 
-    <!-- STICKY CONTACT BUTTONS -->
     <div class="sticky-contact">
         <a href="tel:9565655574" class="sticky-btn call-btn">📞</a>
         <a href="https://wa.me/919565655574?text=Hi%20BABA%20Caterers" class="sticky-btn whatsapp-btn">💬</a>
     </div>
 
     <script>
-        // Hamburger menu toggle
         const hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -1199,7 +1264,6 @@
             mobileMenu.classList.toggle('active');
         });
 
-        // Close mobile menu on link click
         document.querySelectorAll('.mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -1207,7 +1271,6 @@
             });
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 100) {
@@ -1217,7 +1280,6 @@
             }
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1228,7 +1290,6 @@
             });
         });
 
-        // Intersection Observer for dish videos
         const dishVideos = document.querySelectorAll('.dish-video');
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1242,7 +1303,6 @@
 
         dishVideos.forEach(video => videoObserver.observe(video));
 
-        // Chef video rotation
         const chefVideos = document.querySelectorAll('.chef-video');
         let currentChefVideo = 0;
 
@@ -1256,7 +1316,6 @@
         setInterval(rotateChefVideos, 5000);
         chefVideos.forEach(video => video.play());
 
-        // Smoke effect on scroll
         const chefSection = document.querySelector('.chef-section');
         const smokeEffect = document.querySelector('.smoke-effect');
 
@@ -1270,7 +1329,6 @@
 
         smokeObserver.observe(chefSection);
 
-        // Juice droplets animation
         const juiceSection = document.querySelector('.juice-section');
         
         function createDroplet() {
@@ -1294,7 +1352,6 @@
 
         dropletObserver.observe(juiceSection);
 
-        // Demo taste popup at 80% scroll
         let popupShown = false;
 
         window.addEventListener('scroll', () => {
@@ -1310,7 +1367,6 @@
             document.getElementById('demoPopup').classList.remove('active');
         }
 
-        // Close popup on outside click
         document.getElementById('demoPopup').addEventListener('click', (e) => {
             if (e.target.id === 'demoPopup') {
                 closePopup();
@@ -1319,4 +1375,3 @@
     </script>
 
 </body>
-</html>
