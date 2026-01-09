@@ -1,90 +1,73 @@
- 
-```md
-# 🍽️ BABA Caterers – Luxury Wedding Catering Website
+# Welcome to your Lovable project
 
-BABA Caterers is a **luxury, video-first, single-page static website** built for an Indian wedding catering brand with **15+ years of experience**.  
-The project focuses on delivering a **cinematic, premium, and trustworthy digital presence** using only core web technologies.
+## Project info
 
-This website is designed to avoid common templates and generic UI patterns, offering a **custom, wedding-ready experience** suitable for real-world catering businesses.
+**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
----
+## How can I edit this code?
 
-## ✨ Features
+There are several ways of editing your application.
 
-- 🎥 **Video-driven design** for dishes, chef, waiters, juice counters, and services  
-- 🎞️ **Intersection Observer API** to autoplay videos only when visible  
-- 🧭 Sticky navbar with logo and smooth-scroll navigation  
-- 🍹 Scroll-triggered visual effects (juice fall & chef smoke effects)  
-- 🧑‍🍽️ Multi-video looping sections for chef and waiter services  
-- 🥂 Demo Taste popup triggered at 80% page scroll with WhatsApp CTA  
-- 📞 Floating Call & WhatsApp buttons with pre-filled messages  
-- ⚡ Performance-optimized, mobile-friendly, and fully responsive  
+**Use Lovable**
 
----
+Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
-## 🛠 Tech Stack
+Changes made via Lovable will be committed automatically to this repo.
 
-- **HTML5** – Semantic and SEO-friendly structure  
-- **CSS3** – Custom luxury styling, animations, and typography  
-- **Vanilla JavaScript** – Scroll effects, popups, sliders, and video control  
-- ❌ No frameworks  
-- ❌ No libraries  
-- ❌ No backend  
+**Use your preferred IDE**
 
----
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## 📁 Project Structure
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
 
-index.html
-style.css
-script.js
-assets/
-├── images/
-├── videos/
-└── logo/
+**Edit a file directly in GitHub**
 
-```
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
----
+**Use GitHub Codespaces**
 
-## 🚀 Deployment
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-This project is optimized for **static hosting** and can be deployed easily on:
+## What technologies are used for this project?
 
-- Vercel  
-- Netlify  
-- GitHub Pages  
+This project is built with:
 
-No build step is required.
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
----
+## How can I deploy this project?
 
-## 🎯 Purpose
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
-This project serves as a **real-world frontend showcase**, demonstrating:
-- Premium UI/UX without frameworks  
-- Video performance optimization  
-- Scroll-based interactions  
-- Luxury branding using core web technologies  
+## Can I connect a custom domain to my Lovable project?
 
-It can be customized for real catering businesses, portfolios, or client demos.
+Yes, you can!
 
----
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-## 📌 Note
-
-All media files (images/videos) should be optimized and placed locally inside the `assets` folder for best performance.
-
----
-
-## 📞 Contact CTA (Demo Project)
-
-Phone: **9565655574**  
-WhatsApp: *Get Demo Taste / Book Wedding Catering*
-
----
-
-⭐ If you find this project useful, feel free to star the repository!
-```
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
